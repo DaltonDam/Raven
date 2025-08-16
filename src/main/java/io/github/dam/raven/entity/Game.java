@@ -3,7 +3,9 @@ package io.github.dam.raven.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "game")
 public class Game {
 
@@ -19,7 +23,7 @@ public class Game {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 255, nullable = false)
     private String title;
 
     @Column(name = "category")
