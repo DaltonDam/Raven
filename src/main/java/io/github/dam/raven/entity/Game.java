@@ -32,6 +32,7 @@ public class Game {
     @Column(name = "release_date")
     private LocalDate release_date;
 
+    @ManyToMany
     private List<Genre> genres;
 
 }

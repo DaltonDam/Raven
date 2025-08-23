@@ -3,11 +3,10 @@ package io.github.dam.raven.controller;
 import io.github.dam.raven.entity.Genre;
 import io.github.dam.raven.service.GenreService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/raven/genre")
@@ -21,5 +20,23 @@ public class GenreController {
         return genreService.findAll();
     }
 
+    @PostMapping
+    public Genre saveGenre(@RequestBody Genre genre) {
+        return genreService.saveGenre(genre);
+    }
+
+    @GetMapping("/{id}")
+    public Genre getByGenreId(@PathVariable Long id) {
+        Optional<Genre> optGenre = genreService.findById(id);
+        if(optGenre.isPresent()) {
+            return optGenre.get();
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteByGenreId(@PathVariable Long id) {
+        genreService.deleteById(id);
+    }
 
 }
