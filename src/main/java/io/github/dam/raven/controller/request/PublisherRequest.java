@@ -3,5 +3,5 @@ package io.github.dam.raven.controller.request;
 import lombok.Builder;
 
 @Builder
-public record GenreRequest(String name) {
+public record PublisherRequest(String name) {
 }
